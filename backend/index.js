@@ -3,7 +3,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import { connectDB } from "./config/connectDB.js";
-dotenv.config();
+import { connectCloudinary } from "./config/cloudinary.js";
+
 import userRoutes from "./routes/user.routes.js";
 import sellerRoutes from "./routes/seller.routes.js";
 import productRoutes from "./routes/product.routes.js";
@@ -16,19 +17,33 @@ import supportRoutes from "./routes/support.routes.js";
 import subscriberRoutes from "./routes/subscriber.routes.js";
 import reviewRoutes from "./routes/review.routes.js";
 
-import { connectCloudinary } from "./config/cloudinary.js";
+dotenv.config();
 
 const app = express();
 
 await connectCloudinary();
-// allow multiple origins
-const allowedOrigins = ["http://localhost:5173"];
-//middlewares
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+connectDB();
+
+// allow frontend origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://your-frontend.vercel.app"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
+
 app.use(cookieParser());
 app.use(express.json());
 
-// Api endpoints
+// Root route
+app.get("/", (req, res) => {
+  res.send("E-commerce API is running successfully 🚀");
+});
+
+// API routes
 app.use("/images", express.static("uploads"));
 app.use("/api/user", userRoutes);
 app.use("/api/seller", sellerRoutes);
@@ -43,7 +58,7 @@ app.use("/api/subscriber", subscriberRoutes);
 app.use("/api/review", reviewRoutes);
 
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  connectDB();
   console.log(`Server is running on port ${PORT}`);
 });
