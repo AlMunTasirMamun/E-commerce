@@ -24,10 +24,19 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  stock: {
+    type: Number,
+    required: true,
+    default: 10,
+  },
   inStock: {
     type: Boolean,
     required: true,
     default: true,
+  },
+  freeShipping: {
+    type: Boolean,
+    default: false,
   },
 });
 

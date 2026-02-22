@@ -1,20 +1,52 @@
+import { Link } from "react-router-dom";
+import { assets } from "../assets/assets";
+
 const Footer = () => {
+  const companyLinks = [
+    { name: "About", path: "/about" },
+    { name: "Careers", path: "/career" },
+    { name: "Blog", path: "/blog" },
+    { name: "Partners", path: "/partner" }
+  ];
+
+  const supportLinks = [
+    { name: "Help Center", path: "/help-center" },
+    { name: "Safety Information", path: "/safety-information" },
+    { name: "Cancellation Options", path: "/cancellation-options" },
+    { name: "Contact Us", path: "/contact-us" },
+    { name: "Accessibility", path: "/accessibility" }
+  ];
+
+  const legalLinks = [
+    { name: "Privacy", path: "/privacy" },
+    { name: "Terms", path: "/terms" },
+    { name: "Sitemap", path: "/sitemap" }
+  ];
+
   return (
+
+    
     <footer className="bg-gradient-to-br from-indigo-50 via-white to-indigo-100 text-gray-600">
       <div className="px-6 md:px-16 lg:px-24 xl:px-32 pt-10 pb-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {/* BRAND */}
           <div>
-            <h1 className="text-xl font-bold text-indigo-600 leading-tight">
-              <p className="text-center">IUBAT MARKETPLACE</p>
-            </h1>
-            <p className="text-xs mt-2 leading-snug">
-              <b>
-                <p className="text-center">We are committed to delivering the best online shopping
-                  experience with IUBAT Marketplace.</p>
-
-              </b>
+            {assets.iubat_logo ? (
+              <img 
+                src={assets.iubat_logo} 
+                alt="IUBAT Marketplace" 
+                className="h-14 w-auto mx-auto sm:mx-0"
+              />
+            ) : (
+              <h1 className="text-xl font-bold text-center sm:text-left">
+                <span className="text-green-700">IUBAT</span>
+                <span className="text-orange-500"> MARKETPLACE</span>
+              </h1>
+            )}
+            <p className="text-xs mt-2 leading-snug text-center sm:text-left">
+              <b>We are committed to delivering the best online shopping
+                experience with IUBAT Marketplace.</b>
             </p>
 
             {/* Social Icons */}
@@ -34,33 +66,33 @@ const Footer = () => {
           <div>
             <p className="text-sm font-semibold text-gray-900">Company</p>
             <ul className="mt-2 space-y-1 text-xs">
-              {["About", "Careers", "Press", "Blog", "Partners"].map((item) => (
-                <li
-                  key={item}
-                  className="hover:text-indigo-500 transition cursor-pointer"
-                >
-                  {item}
+              {companyLinks.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.path} 
+                    className="hover:text-indigo-500 transition"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
+
           </div>
 
+         
           {/* SUPPORT */}
           <div>
             <p className="text-sm font-semibold text-gray-900">Support</p>
             <ul className="mt-2 space-y-1 text-xs">
-              {[
-                "Help Center",
-                "Safety Information",
-                "Cancellation Options",
-                "Contact Us",
-                "Accessibility",
-              ].map((item) => (
-                <li
-                  key={item}
-                  className="hover:text-indigo-500 transition cursor-pointer"
-                >
-                  {item}
+              {supportLinks.map((link) => (
+                <li key={link.name}>
+                  <Link 
+                    to={link.path} 
+                    className="hover:text-indigo-500 transition"
+                  >
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -97,12 +129,14 @@ const Footer = () => {
             © {new Date().getFullYear()} IUBAT Marketplace. All rights reserved.
           </p>
           <ul className="flex items-center gap-4">
-            {["Privacy", "Terms", "Sitemap"].map((item) => (
-              <li
-                key={item}
-                className="hover:text-indigo-500 transition cursor-pointer"
-              >
-                {item}
+            {legalLinks.map((link) => (
+              <li key={link.name}>
+                <Link 
+                  to={link.path} 
+                  className="hover:text-indigo-500 transition"
+                >
+                  {link.name}
+                </Link>
               </li>
             ))}
           </ul>

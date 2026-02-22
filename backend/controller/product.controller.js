@@ -4,7 +4,7 @@ import Product from "../models/product.model.js";
 // add product :/api/product/add
 export const addProduct = async (req, res) => {
   try {
-    const { name, price, offerPrice, description, category } = req.body;
+    const { name, price, offerPrice, description, category, freeShipping, stock } = req.body;
     // const image = req.files?.map((file) => `/uploads/${file.filename}`);
     const image = req.files?.map((file) => file.filename);
     if (
@@ -22,6 +22,8 @@ export const addProduct = async (req, res) => {
       });
     }
 
+    const stockNum = stock ? Number(stock) : 10;
+    
     const product = new Product({
       name,
       price,
@@ -29,6 +31,9 @@ export const addProduct = async (req, res) => {
       description,
       category,
       image,
+      freeShipping: freeShipping === 'true' || freeShipping === true,
+      stock: stockNum,
+      inStock: stockNum > 0,
     });
 
     const savedProduct = await product.save();
@@ -69,7 +74,27 @@ export const getProductById = async (req, res) => {
 // change stock  :/api/product/stock
 export const changeStock = async (req, res) => {
   try {
-    const { id, inStock } = req.body;
+    const { id, inStock, stock } = req.body;
+    
+    // If stock quantity is provided, update both stock and inStock
+    if (stock !== undefined) {
+      const stockNum = Number(stock);
+      const product = await Product.findByIdAndUpdate(
+        id,
+        { 
+          stock: stockNum,
+          inStock: stockNum > 0 
+        },
+        { new: true }
+      );
+      return res.status(200).json({ 
+        success: true, 
+        product, 
+        message: stockNum > 0 ? "Stock updated successfully" : "Product marked as out of stock" 
+      });
+    }
+    
+    // Otherwise just toggle inStock (legacy support)
     const product = await Product.findByIdAndUpdate(
       id,
       { inStock },
@@ -80,5 +105,50 @@ export const changeStock = async (req, res) => {
       .json({ success: true, product, message: "Stock updated successfully" });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
+  }
+};
+
+// update price  :/api/product/update-price
+export const updatePrice = async (req, res) => {
+  try {
+    const { id, price, offerPrice, freeShipping } = req.body;
+    
+    if (!id || !price || !offerPrice) {
+      return res.status(400).json({
+        success: false,
+        message: "Product ID, price and offer price are required",
+      });
+    }
+
+    const updateData = { 
+      price: Number(price), 
+      offerPrice: Number(offerPrice) 
+    };
+    
+    // Only update freeShipping if it's provided
+    if (freeShipping !== undefined) {
+      updateData.freeShipping = freeShipping;
+    }
+
+    const product = await Product.findByIdAndUpdate(
+      id,
+      updateData,
+      { new: true }
+    );
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      product,
+      message: "Price updated successfully",
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Server error", error: error.message });
   }
 };

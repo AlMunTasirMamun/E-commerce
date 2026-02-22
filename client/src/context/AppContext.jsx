@@ -4,6 +4,7 @@ import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
 axios.defaults.withCredentials = true;
+axios.defaults.baseURL = "http://localhost:5000";
 
 export const AppContext = createContext(null);
 
@@ -15,6 +16,7 @@ export const AppContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cartItems, setCartItems] = useState({});
   const [searchQuery, setSearchQuery] = useState("");
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // check seller status
   const fetchSeller = async () => {
@@ -155,6 +157,8 @@ export const AppContextProvider = ({ children }) => {
     axios,
     fetchProducts,
     setCartItems,
+    isChatOpen,
+    setIsChatOpen,
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
