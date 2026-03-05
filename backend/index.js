@@ -28,6 +28,7 @@ app.use(
   cors({
     origin: [
       "https://e-commerce-hb121dfnt-almuntasirmamuns-projects.vercel.app",
+      "https://e-commerce-j9tofn5s2-almuntasirmamuns-projects.vercel.app",
       "http://localhost:5173"
     ],
     credentials: true,
