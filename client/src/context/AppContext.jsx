@@ -4,10 +4,7 @@ import { dummyProducts } from "../assets/assets";
 import toast from "react-hot-toast";
 import axios from "axios";
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL =
-  process.env.NODE_ENV === "production"
-    ? "https://e-commerce-production-0858.up.railway.app"
-    : "http://localhost:5000";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 export const AppContext = createContext(null);
 
