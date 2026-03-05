@@ -25,10 +25,7 @@ await connectCloudinary();
 connectDB();
 
 // allow frontend origins
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://your-frontend.vercel.app"
-];
+app.use(cors());
 
 app.use(cors({
   origin: allowedOrigins,
