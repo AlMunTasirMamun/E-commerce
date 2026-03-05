@@ -23,9 +23,16 @@ const app = express();
 
 await connectCloudinary();
 connectDB();
-
 // allow frontend origins
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://e-commerce-hb121dfnt-almuntasirmamuns-projects.vercel.app",
+      "http://localhost:5173"
+    ],
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 

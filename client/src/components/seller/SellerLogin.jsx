@@ -4,7 +4,10 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 // ✅ Axios configuration (VERY IMPORTANT)
-axios.defaults.baseURL = "http://localhost:5000";
+axios.defaults.baseURL =
+  process.env.NODE_ENV === "production"
+    ? "https://e-commerce-production-0858.up.railway.app"
+    : "http://localhost:5000";
 axios.defaults.withCredentials = true;
 
 const SellerLogin = () => {
