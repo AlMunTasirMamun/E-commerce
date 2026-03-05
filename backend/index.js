@@ -26,12 +26,6 @@ connectDB();
 
 // allow frontend origins
 app.use(cors());
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
-
 app.use(cookieParser());
 app.use(express.json());
 
