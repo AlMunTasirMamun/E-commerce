@@ -29,6 +29,9 @@ app.use(
     origin: [
       "https://e-commerce-hb121dfnt-almuntasirmamuns-projects.vercel.app",
       "https://e-commerce-j9tofn5s2-almuntasirmamuns-projects.vercel.app",
+      "https://e-commerce-aki23u0ji-almuntasirmamuns-projects.vercel.app",
+      "https://e-commerce-f22hmueis-almuntasirmamuns-projects.vercel.app",
+      "https://e-commerce-production-0858.up.railway.app",
       "http://localhost:5173"
     ],
     credentials: true,
