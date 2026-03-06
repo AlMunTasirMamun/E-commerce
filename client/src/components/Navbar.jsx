@@ -133,6 +133,15 @@ const Navbar = () => {
                 </svg>
                 Contact
               </Link>
+                <Link 
+                  to="/seller" 
+                  className="px-4 py-2 text-sm font-bold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 rounded-lg transition-all duration-200 flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0-1.104.896-2 2-2s2 .896 2 2-2 2-2 2-2-.896-2-2zm0 0v2m0-2V9m0 2h2m-2 0H10" />
+                  </svg>
+                  Seller Login
+                </Link>
             </div>
 
             {/* SEARCH */}
@@ -429,6 +438,16 @@ const Navbar = () => {
               </svg>
               Contact Us
             </Link>
+              <Link 
+                onClick={() => setOpen(false)} 
+                to="/seller"
+                className="flex items-center gap-3 px-6 py-3 text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:from-indigo-600 hover:via-purple-600 hover:to-pink-600 transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0-1.104.896-2 2-2s2 .896 2 2-2 2-2 2-2-.896-2-2zm0 0v2m0-2V9m0 2h2m-2 0H10" />
+                </svg>
+                Seller Login
+              </Link>
           </div>
 
           {/* Mobile User Actions */}
