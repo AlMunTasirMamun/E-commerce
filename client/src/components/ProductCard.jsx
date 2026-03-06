@@ -17,13 +17,14 @@ const ProductCard = ({ product }) => {
     : 0;
 
   // 🔥 IMAGE HANDLER (frontend + backend)
+  const BASE_URL = import.meta.env.VITE_API_URL || "https://e-commerce-production-0858.up.railway.app";
   const imageSrc =
     typeof product.image?.[0] === "string"
       ? product.image[0].startsWith("http")
         ? product.image[0]
         : product.image[0].startsWith("/")
-          ? product.image[0]
-          : `${BACKEND_URL}/images/${product.image[0]}`
+          ? `${BASE_URL}${product.image[0]}`
+          : `${BASE_URL}/uploads/${product.image[0]}`
       : product.image?.[0];
 
   const handleBuyNow = (e) => {
