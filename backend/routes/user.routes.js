@@ -14,6 +14,7 @@ import {
 } from "../controller/user.controller.js";
 import authUser from "../middlewares/authUser.js";
 import { upload } from "../config/multer.js";
+import { forgotPassword, resetPassword } from "../controller/user.controller.js";
 
 const router = express.Router();
 
@@ -32,5 +33,9 @@ router.get("/profile", authUser, getUserProfile);
 router.put("/profile", authUser, updateUserProfile);
 router.post("/profile/picture", authUser, upload.single("profilePicture"), uploadProfilePicture);
 router.put("/change-password", authUser, changePassword);
+
+// Forgot password routes
+router.post("/forgot-password", forgotPassword);
+router.post("/reset-password", resetPassword);
 
 export default router;

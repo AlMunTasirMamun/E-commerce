@@ -9,6 +9,7 @@ const AddProduct = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+  const [brand, setBrand] = useState("");
   const [price, setPrice] = useState("");
   const [discount, setDiscount] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
@@ -108,6 +109,7 @@ const AddProduct = () => {
       formData.append("name", name);
       formData.append("description", description);
       formData.append("category", category);
+      formData.append("brand", brand || "General");
       formData.append("price", price);
       formData.append("offerPrice", offerPrice);
       formData.append("freeShipping", freeShipping);
@@ -129,6 +131,7 @@ const AddProduct = () => {
         setName("");
         setDescription("");
         setCategory("");
+        setBrand("");
         setPrice("");
         setDiscount("");
         setOfferPrice("");
@@ -138,7 +141,7 @@ const AddProduct = () => {
 
         // ✅ THIS IS THE KEY FIX
         await fetchProducts();            // refresh product list
-        navigate("/seller/products");     // go to product list
+        navigate("/seller/product-list");     // go to product list
       } else {
         toast.error(data.message, { icon: null });
       }
@@ -181,6 +184,13 @@ const AddProduct = () => {
               ))}
           </div>
         </div>
+
+        <input
+          value={brand}
+          onChange={(e) => setBrand(e.target.value)}
+          placeholder="Brand Name (optional, defaults to 'General')"
+          className="border p-2 w-full rounded"
+        />
 
         <input
           value={name}

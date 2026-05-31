@@ -79,9 +79,7 @@ const TransactionHistory = () => {
     // Header
     doc.setFontSize(22);
     doc.setTextColor(34, 139, 34);
-    doc.text("IUBAT", pageWidth / 2 - 20, y, { align: "center" });
-    doc.setTextColor(255, 140, 0);
-    doc.text("MARKETPLACE", pageWidth / 2 + 25, y, { align: "center" });
+    doc.text("সদাই", pageWidth / 2 - 20, y, { align: "center" });
     y += 10;
 
     doc.setFontSize(14);
@@ -202,7 +200,7 @@ const TransactionHistory = () => {
     });
     y += 6;
     doc.setFontSize(8);
-    doc.text("IUBAT Marketplace © 2026", pageWidth / 2, y, { align: "center" });
+    doc.text("সদাই © 2026", pageWidth / 2, y, { align: "center" });
 
     return doc;
   };

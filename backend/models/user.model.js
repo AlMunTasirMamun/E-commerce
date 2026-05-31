@@ -36,7 +36,16 @@ const userSchema = new mongoose.Schema(
         relatedId: { type: String }, // orderId, refundId, etc.
         createdAt: { type: Date, default: Date.now },
       },
+
     ],
+    resetPasswordCode: {
+      type: String,
+      default: null,
+    },
+    resetPasswordExpires: {
+      type: Date,
+      default: null,
+    },
   },
   { minimize: false }
 );

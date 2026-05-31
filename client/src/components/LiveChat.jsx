@@ -6,7 +6,7 @@ const LiveChat = ({ isOpen, onClose }) => {
     {
       id: 1,
       type: 'bot',
-      text: 'Hello! 👋 Welcome to IUBAT Marketplace support. How can we help you today?',
+      text: 'Hello! 👋 Welcome to সদাই support. How can we help you today?',
       timestamp: new Date()
     }
   ]);

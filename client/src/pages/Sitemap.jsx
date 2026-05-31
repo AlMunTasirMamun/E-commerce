@@ -65,7 +65,7 @@ const Sitemap = () => {
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Sitemap
           </h1>
-          <p className="text-lg text-gray-600">Navigate through all sections of IUBAT Marketplace</p>
+          <p className="text-lg text-gray-600">Navigate through all sections of সদাই</p>
         </div>
 
         {/* Sitemap Grid */}
@@ -163,7 +163,7 @@ const Sitemap = () => {
         {/* Footer */}
         <div className="mt-12 text-center text-gray-500 text-sm">
           <p>Last updated: January 21, 2026</p>
-          <p>For broken links or missing pages, please report to support@iubatmarketplace.com</p>
+          <p>For broken links or missing pages, please report to support@sodai.com</p>
         </div>
       </div>
     </div>

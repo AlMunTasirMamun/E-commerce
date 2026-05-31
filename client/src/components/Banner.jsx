@@ -7,7 +7,7 @@ const Banner = () => {
       {/* Banner Image */}
       <img
         src={bannerImage}
-        alt="IUBAT Marketplace Banner"
+        alt="সদাই Banner"
         className="w-screen h-[260px] md:h-[300px] lg:h-[340px] object-cover"
       />
 

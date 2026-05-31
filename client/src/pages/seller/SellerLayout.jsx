@@ -20,6 +20,7 @@ const SellerLayout = () => {
       icon: assets.product_list_icon,
     },
     { name: "Orders", path: "/seller/orders", icon: assets.order_icon },
+    { name: "Sales Report", path: "/seller/sales-report", icon: assets.coin_icon },
     { name: "Refunds", path: "/seller/refunds", icon: assets.refresh_icon },
     { name: "Reviews", path: "/seller/reviews", icon: assets.box_icon },
     { name: "Support", path: "/seller/support", icon: assets.box_icon },
@@ -141,13 +142,12 @@ const SellerLayout = () => {
           {assets.iubat_logo ? (
             <img 
               src={assets.iubat_logo} 
-              alt="IUBAT Marketplace" 
+              alt="সদাই" 
               className="h-10 md:h-12 w-auto"
             />
           ) : (
             <h1 className="text-xl md:text-2xl font-bold">
-              <span className="text-green-700">IUBAT</span>
-              <span className="text-orange-500"> MARKETPLACE</span>
+              <span className="text-green-700">সদাই</span>
             </h1>
           )}
         </Link>

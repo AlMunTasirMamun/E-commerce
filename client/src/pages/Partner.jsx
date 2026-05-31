@@ -62,7 +62,7 @@ const Partner = () => {
           <div className="bg-indigo-50 p-6 rounded-lg">
             <h3 className="text-2xl font-bold text-indigo-600 mb-2">Become a Partner</h3>
             <p className="text-gray-600 mb-4">
-              Join our growing network of partners and expand your business with IUBAT Marketplace
+              Join our growing network of partners and expand your business with সদাই
             </p>
             <ul className="space-y-2 text-sm text-gray-700">
               <li>✓ Reach millions of customers</li>

@@ -95,7 +95,7 @@ const Navbar = () => {
             <div className="bg-white p-1 rounded-full shadow-lg transition-transform group-hover:scale-105 ring-2 ring-white/50 overflow-hidden flex items-center justify-center">
               <img 
                 src={assets.iubat_logo} 
-                alt="IUBAT Marketplace" 
+                alt="সদাই" 
                 className="h-16 w-16 md:h-20 md:w-20 rounded-full object-cover object-center scale-125"
                 style={{maxWidth:'none'}}
               />
@@ -162,30 +162,32 @@ const Navbar = () => {
               {/* CART */}
               <button
                 onClick={() => navigate("/cart")}
-                className="relative p-2.5 hover:bg-indigo-100 rounded-full transition-all duration-200 group border border-indigo-200"
+                className="relative p-2.5 hover:bg-yellow-100 rounded-full transition-all duration-200 group border border-yellow-400"
+                title="Cart"
               >
-                <svg className="w-5 h-5 text-white/90 group-hover:text-yellow-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-yellow-500 group-hover:text-yellow-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
                 {cartCount() > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 bg-gradient-to-r from-indigo-400 to-pink-400 text-white text-[11px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg animate-bounce border border-white">
+                  <span className="absolute -top-0.5 -right-0.5 bg-yellow-400 text-white text-[11px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg animate-bounce border border-white">
                     {cartCount()}
                   </span>
                 )}
-            </button>
+              </button>
 
             {/* NOTIFICATIONS */}
             {user && (
               <div className="relative">
                 <button
                   onClick={() => setShowNotifications(!showNotifications)}
-                  className="relative p-2.5 hover:bg-indigo-100 rounded-full transition-all duration-200 group border border-indigo-200"
+                  className="relative p-2.5 hover:bg-pink-100 rounded-full transition-all duration-200 group border border-pink-400"
+                  title="Notifications"
                 >
-                  <svg className="w-5 h-5 text-white/90 group-hover:text-pink-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 text-pink-500 group-hover:text-pink-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                   </svg>
                   {unreadCount > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 bg-gradient-to-r from-indigo-400 to-pink-400 text-white text-[11px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg animate-pulse border border-white">
+                    <span className="absolute -top-0.5 -right-0.5 bg-pink-400 text-white text-[11px] font-bold min-w-[18px] h-[18px] flex items-center justify-center rounded-full shadow-lg animate-pulse border border-white">
                       {unreadCount > 9 ? "9+" : unreadCount}
                     </span>
                   )}

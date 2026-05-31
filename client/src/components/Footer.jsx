@@ -40,13 +40,12 @@ const Footer = () => {
               />
             ) : (
               <h1 className="text-xl font-bold text-center sm:text-left">
-                <span className="text-green-700">IUBAT</span>
-                <span className="text-orange-500"> MARKETPLACE</span>
+                <span className="text-green-700">সদাই</span>
               </h1>
             )}
             <p className="text-xs mt-2 leading-snug text-center sm:text-left">
               <b>We are committed to delivering the best online shopping
-                experience with IUBAT Marketplace.</b>
+                experience with সদাই.</b>
             </p>
 
             {/* Social Icons */}
@@ -126,7 +125,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
           <p>
-            © {new Date().getFullYear()} IUBAT Marketplace. All rights reserved.
+            © {new Date().getFullYear()} সদাই. All rights reserved.
           </p>
           <ul className="flex items-center gap-4">
             {legalLinks.map((link) => (

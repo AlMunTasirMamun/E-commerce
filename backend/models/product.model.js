@@ -24,6 +24,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  brand: {
+    type: String,
+    default: "General",
+  },
   stock: {
     type: Number,
     required: true,

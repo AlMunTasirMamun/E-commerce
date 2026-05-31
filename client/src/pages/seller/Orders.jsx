@@ -75,7 +75,7 @@ const Orders = () => {
 
   const filteredOrders = orders.filter((order) => {
     if (!order) return false;
-    
+
     // Search filter
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase();
@@ -199,6 +199,7 @@ const Orders = () => {
               </svg>
               <span className="text-sm font-medium text-gray-700">Refresh</span>
             </button>
+            
             <div className="flex items-center gap-3 bg-gradient-to-r from-green-50 to-emerald-50 px-4 py-3 rounded-xl border border-green-200">
               <span className="text-2xl">💰</span>
               <div>

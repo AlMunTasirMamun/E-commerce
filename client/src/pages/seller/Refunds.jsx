@@ -9,6 +9,9 @@ const Refunds = () => {
   const [showDetailsModal, setShowDetailsModal] = useState(false);
   const [selectedRefund, setSelectedRefund] = useState(null);
   const [adminNotes, setAdminNotes] = useState("");
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [confirmAction, setConfirmAction] = useState(null);
+  const [confirmRefundId, setConfirmRefundId] = useState(null);
   const { axios } = useContext(AppContext);
 
   const reasonLabels = {
@@ -84,6 +87,27 @@ const Refunds = () => {
     setShowDetailsModal(false);
     setSelectedRefund(null);
     setAdminNotes("");
+  };
+
+  const openConfirmDialog = (refundId, action) => {
+    setConfirmRefundId(refundId);
+    setConfirmAction(action);
+    setShowConfirmDialog(true);
+  };
+
+  const handleConfirmAction = async () => {
+    if (confirmRefundId && confirmAction) {
+      await handleProcessRefund(confirmRefundId, confirmAction);
+      setShowConfirmDialog(false);
+      setConfirmRefundId(null);
+      setConfirmAction(null);
+    }
+  };
+
+  const closeConfirmDialog = () => {
+    setShowConfirmDialog(false);
+    setConfirmRefundId(null);
+    setConfirmAction(null);
   };
 
   useEffect(() => {
@@ -222,14 +246,14 @@ const Refunds = () => {
                   {refund.status === "pending" && (
                     <>
                       <button
-                        onClick={() => handleProcessRefund(refund._id, "approve")}
+                        onClick={() => openConfirmDialog(refund._id, "approve")}
                         disabled={processingId === refund._id}
                         className="px-4 py-2 text-sm bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50"
                       >
                         {processingId === refund._id ? "Processing..." : "Approve"}
                       </button>
                       <button
-                        onClick={() => handleProcessRefund(refund._id, "reject")}
+                        onClick={() => openConfirmDialog(refund._id, "reject")}
                         disabled={processingId === refund._id}
                         className="px-4 py-2 text-sm bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors disabled:opacity-50"
                       >
@@ -455,14 +479,14 @@ const Refunds = () => {
               {selectedRefund.status === "pending" && (
                 <>
                   <button
-                    onClick={() => handleProcessRefund(selectedRefund._id, "reject")}
+                    onClick={() => openConfirmDialog(selectedRefund._id, "reject")}
                     disabled={processingId === selectedRefund._id}
                     className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors disabled:opacity-50"
                   >
                     {processingId === selectedRefund._id ? "Processing..." : "Reject"}
                   </button>
                   <button
-                    onClick={() => handleProcessRefund(selectedRefund._id, "approve")}
+                    onClick={() => openConfirmDialog(selectedRefund._id, "approve")}
                     disabled={processingId === selectedRefund._id}
                     className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 transition-colors disabled:opacity-50"
                   >
@@ -470,6 +494,57 @@ const Refunds = () => {
                   </button>
                 </>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Dialog */}
+      {showConfirmDialog && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg shadow-xl max-w-sm mx-4">
+            <div className="p-6">
+              <div className="flex items-center justify-center w-12 h-12 mx-auto bg-yellow-100 rounded-full mb-4">
+                <svg className="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4v2m0-6a4 4 0 00-4 4v1H7a2 2 0 00-2 2v3a2 2 0 002 2h10a2 2 0 002-2v-3a2 2 0 00-2-2h-1v-1a4 4 0 00-4-4z" />
+                </svg>
+              </div>
+              
+              <h3 className="text-lg font-medium text-gray-900 text-center mb-2">
+                Confirm {confirmAction === "approve" ? "Approval" : "Rejection"}
+              </h3>
+              
+              <p className="text-sm text-gray-500 text-center mb-6">
+                Are you sure you want to <strong>{confirmAction === "approve" ? "approve" : "reject"}</strong> this refund request? This action cannot be undone.
+              </p>
+
+              {confirmAction === "approve" && (
+                <div className="mb-6 p-3 bg-green-50 rounded-lg border border-green-200">
+                  <p className="text-sm text-green-800">
+                    <strong>Amount to Refund:</strong> ৳{refunds.find(r => r._id === confirmRefundId)?.refundableAmount || 0}
+                  </p>
+                </div>
+              )}
+
+              <div className="flex gap-3">
+                <button
+                  onClick={closeConfirmDialog}
+                  className="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleConfirmAction}
+                  disabled={processingId === confirmRefundId}
+                  className={`flex-1 px-4 py-2 text-white rounded-md font-medium transition-colors ${
+                    confirmAction === "approve"
+                      ? "bg-green-500 hover:bg-green-600 disabled:opacity-50"
+                      : "bg-red-500 hover:bg-red-600 disabled:opacity-50"
+                  }`}
+                >
+                  {processingId === confirmRefundId ? "Processing..." : confirmAction === "approve" ? "Approve" : "Reject"}
+                </button>
+              </div>
             </div>
           </div>
         </div>

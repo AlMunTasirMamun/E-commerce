@@ -406,7 +406,7 @@ const SingleProduct = () => {
               <span className="text-2xl">🚚</span>
               <div>
                 <p className="font-medium text-gray-800 text-sm">Free Delivery</p>
-                <p className="text-xs text-gray-500">On orders over ৳500</p>
+                <p className="text-xs text-gray-500">On Some Products We have Free Delivery</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl">
@@ -480,7 +480,7 @@ const SingleProduct = () => {
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-200">
                   <span className="text-gray-500">Brand</span>
-                  <span className="font-medium text-gray-800">IUBAT Market</span>
+                  <span className="font-medium text-gray-800">সদাই</span>
                 </div>
                 <div className="flex justify-between py-3 border-b border-gray-200">
                   <span className="text-gray-500">Availability</span>

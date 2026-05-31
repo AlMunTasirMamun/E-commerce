@@ -90,9 +90,9 @@ const Career = () => {
         {/* CTA */}
         <div className="mt-12 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-2">Don't see a position that fits?</h3>
-          <p className="mb-4">Send us your resume and let us know how you can contribute to our team</p>
+          <p className="mb-4">Submit a general application and we'll keep your resume for future opportunities</p>
           <button className="px-6 py-2 bg-white text-indigo-600 font-semibold rounded-lg hover:bg-gray-100 transition">
-            Send Resume
+            General Application
           </button>
         </div>
       </div>

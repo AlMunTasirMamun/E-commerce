@@ -17,15 +17,18 @@ const ProductCard = ({ product }) => {
     : 0;
 
   // 🔥 IMAGE HANDLER (frontend + backend)
-  const BASE_URL = import.meta.env.VITE_API_URL || "https://e-commerce-production-0858.up.railway.app";
-  const imageSrc =
-    typeof product.image?.[0] === "string"
-      ? product.image[0].startsWith("http")
-        ? product.image[0]
-        : product.image[0].startsWith("/")
-          ? `${BASE_URL}${product.image[0]}`
-          : `${BASE_URL}/uploads/${product.image[0]}`
-      : product.image?.[0];
+  const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  let imageSrc = assets.box_icon;
+  if (product.image?.[0]) {
+    if (typeof product.image[0] === "string") {
+      if (product.image[0].startsWith("http")) {
+        imageSrc = product.image[0];
+      } else {
+        // Always use /images/ for local files
+        imageSrc = `${BASE_URL}/images/${product.image[0]}`;
+      }
+    }
+  }
 
   const handleBuyNow = (e) => {
     e.stopPropagation();
@@ -188,7 +191,9 @@ const ProductCard = ({ product }) => {
               <span className="font-semibold text-indigo-700 text-sm">{cartItems[product._id]}</span>
               <button 
                 onClick={() => addToCart(product._id)}
-                className="w-6 h-6 flex items-center justify-center bg-white rounded-md text-indigo-600 font-bold hover:bg-indigo-100 transition-colors shadow-sm text-sm"
+                disabled={product.stock <= 0}
+                className="w-6 h-6 flex items-center justify-center bg-white rounded-md text-indigo-600 font-bold hover:bg-indigo-100 transition-colors shadow-sm text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+               title={product.stock <= 0 ? `Out of stock` : ''}
               >
                 +
               </button>

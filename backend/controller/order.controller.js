@@ -19,9 +19,23 @@ export const placeOrderCOD = async (req, res) => {
 
     // Add tax charge 2%
     amount += Math.floor((amount * 2) / 100);
-    
-    // amount = product price + tax (revenue for seller)
-    // shippingFee = shipping cost (stored separately, not part of revenue)
+
+    // Decrease product stock for each item
+    for (const item of items) {
+      const product = await Product.findById(item.product);
+      if (!product) {
+        return res.status(404).json({ message: `Product not found: ${item.product}`, success: false });
+      }
+      if (product.stock < item.quantity) {
+        return res.status(400).json({ message: `Not enough stock for ${product.name}`, success: false });
+      }
+      product.stock -= item.quantity;
+      if (product.stock === 0) {
+        product.inStock = false;
+      }
+      await product.save();
+    }
+
     await Order.create({
       userId,
       items,

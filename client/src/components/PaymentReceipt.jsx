@@ -25,10 +25,9 @@ const PaymentReceipt = ({ isOpen, onClose, receiptData }) => {
 
     // Header
     doc.setFontSize(22);
-    doc.setTextColor(34, 139, 34); // Green for IUBAT
-    doc.text("IUBAT", pageWidth / 2 - 20, y, { align: "center" });
-    doc.setTextColor(255, 140, 0); // Orange for MARKETPLACE
-    doc.text("MARKETPLACE", pageWidth / 2 + 25, y, { align: "center" });
+    doc.setTextColor(34, 139, 34); // Green for সদাই
+    doc.text("সদাই", pageWidth / 2 - 20, y, { align: "center" });
+    doc.setTextColor(255, 140, 0);
     y += 10;
 
     doc.setFontSize(14);
@@ -132,7 +131,7 @@ const PaymentReceipt = ({ isOpen, onClose, receiptData }) => {
     doc.text("Thank you for shopping with us!", pageWidth / 2, y, { align: "center" });
     y += 6;
     doc.setFontSize(8);
-    doc.text("IUBAT Marketplace © 2026", pageWidth / 2, y, { align: "center" });
+    doc.text("সদাই © 2026", pageWidth / 2, y, { align: "center" });
 
     return doc;
   };
@@ -152,13 +151,12 @@ const PaymentReceipt = ({ isOpen, onClose, receiptData }) => {
             {assets.iubat_logo ? (
               <img 
                 src={assets.iubat_logo} 
-                alt="IUBAT Marketplace" 
+                alt="সদাই" 
                 className="h-16 w-auto mx-auto"
               />
             ) : (
               <h1 className="text-2xl font-bold">
-                <span className="text-green-700">IUBAT</span>
-                <span className="text-orange-500"> MARKETPLACE</span>
+                <span className="text-green-700">সদাই</span>
               </h1>
             )}
             <p className="text-gray-600 mt-2">Payment Receipt</p>
@@ -230,7 +228,7 @@ const PaymentReceipt = ({ isOpen, onClose, receiptData }) => {
           {/* Footer */}
           <div className="text-center border-t-2 border-dashed border-gray-300 pt-4 mt-4">
             <p className="text-gray-500 text-sm">Thank you for shopping with us!</p>
-            <p className="text-gray-400 text-xs mt-1">IUBAT Marketplace © 2026</p>
+            <p className="text-gray-400 text-xs mt-1">সদাই © 2026</p>
           </div>
         </div>
 

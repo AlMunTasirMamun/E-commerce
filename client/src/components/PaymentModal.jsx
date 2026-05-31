@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import PaymentReceipt from "./PaymentReceipt";
 
 const PaymentModal = ({ isOpen, onClose, cartItems, selectedAddress, totalAmount, shippingAmount = 0, isExpressDelivery = false }) => {
-  const { axios, navigate, setCartItems } = useAppContext();
+  const { axios, navigate, setCartItems, fetchProducts } = useAppContext();
   const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState("bkash");
   
@@ -231,6 +231,8 @@ const PaymentModal = ({ isOpen, onClose, cartItems, selectedAddress, totalAmount
         });
 
         setCartItems({});
+        // Wait for products to refresh before showing receipt
+        await fetchProducts(true);
         setShowReceipt(true);
         toast.success("Payment successful! 🎉");
       } else {
@@ -267,8 +269,10 @@ const PaymentModal = ({ isOpen, onClose, cartItems, selectedAddress, totalAmount
         if (data.success) {
           toast.success("Order placed successfully!");
           setCartItems({});
+          // Wait for products to refresh before closing
+          await fetchProducts(true);
           onClose();
-          setTimeout(() => navigate("/my-orders"), 1000);
+          setTimeout(() => navigate("/my-orders"), 500);
         } else {
           toast.error(data.message || "Failed to place order");
         }
@@ -303,6 +307,8 @@ const PaymentModal = ({ isOpen, onClose, cartItems, selectedAddress, totalAmount
           });
 
           setCartItems({});
+          // Wait for products to refresh before showing receipt
+          await fetchProducts(true);
           setShowReceipt(true);
           toast.success("Payment processed successfully!");
         } else {

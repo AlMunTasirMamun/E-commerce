@@ -213,7 +213,7 @@ const ContactUs = () => {
           <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
             <div className="text-4xl mb-4">📧</div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Email</h3>
-            <p className="text-gray-600 text-sm mb-3">support@iubatmarketplace.com</p>
+            <p className="text-gray-600 text-sm mb-3">support@sodai.com</p>
             <p className="text-xs text-gray-500">Response time: Within 24 hours</p>
           </div>
           <div className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition">
@@ -297,7 +297,7 @@ const ContactUs = () => {
               <div>
                 <h3 className="font-bold text-gray-900 mb-2">📍 Head Office</h3>
                 <p className="text-gray-600 text-sm">
-                  IUBAT Marketplace<br/>
+                  সদাই<br/>
                   Bangladesh University of Business and Technology<br/>
                   Dhaka, Bangladesh
                 </p>

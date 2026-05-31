@@ -19,7 +19,7 @@ const Accessibility = () => {
         <div className="bg-indigo-50 rounded-lg p-8 mb-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">Accessibility Statement</h2>
           <p className="text-gray-700 mb-4">
-            IUBAT Marketplace is committed to making our website accessible to everyone, including people with disabilities. We strive to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.
+            সদাই is committed to making our website accessible to everyone, including people with disabilities. We strive to conform to the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA standards.
           </p>
           <p className="text-gray-700">
             If you have difficulties accessing our website or services, please contact our accessibility team for assistance.
@@ -128,7 +128,7 @@ const Accessibility = () => {
 
         {/* Contact Info */}
         <div className="mt-8 text-center text-gray-600">
-          <p>For accessibility assistance, contact: <strong>accessibility@iubatmarketplace.com</strong></p>
+          <p>For accessibility assistance, contact: <strong>accessibility@sodai.com</strong></p>
         </div>
 
         <LiveChat isOpen={showLiveChat} onClose={() => setShowLiveChat(false)} />

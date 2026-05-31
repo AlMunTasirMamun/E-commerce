@@ -28,6 +28,7 @@ const Cart = () => {
   const [newAddress, setNewAddress] = useState({
     street: "",
     city: "",
+    district: "",
     state: "",
     country: "",
   });
@@ -50,8 +51,8 @@ const Cart = () => {
     // Determine if address is in Dhaka
     if (!selectedAddress) return 0;
     
-    const city = selectedAddress.city?.toLowerCase() || "";
-    const isInsideDhaka = city.includes("dhaka");
+    const district = selectedAddress.district?.toLowerCase() || "";
+    const isInsideDhaka = district === "dhaka" || district.includes("dhaka");
     
     let baseShipping = isInsideDhaka ? SHIPPING_INSIDE_DHAKA : SHIPPING_OUTSIDE_DHAKA;
     
@@ -126,7 +127,7 @@ const Cart = () => {
       if (data.success) {
         toast.success("Address added");
         setShowAddAddressForm(false);
-        setNewAddress({ street: "", city: "", state: "", country: "" });
+        setNewAddress({ street: "", city: "", district: "", state: "", country: "" });
         getAddress();
       } else {
         toast.error(data.message);
@@ -372,7 +373,7 @@ const Cart = () => {
                                 selectedAddress?._id === a._id ? 'bg-indigo-50' : ''
                               }`}
                             >
-                              <p className="text-sm text-gray-700">{a.street}, {a.city}</p>
+                              <p className="text-sm text-gray-700">{a.street}, {a.city}, {a.district}</p>
                               <p className="text-xs text-gray-500">{a.state}, {a.country}</p>
                             </div>
                           ))}
@@ -400,7 +401,7 @@ const Cart = () => {
                 {showAddAddressForm && (
                   <div className="bg-indigo-50 rounded-xl p-4 space-y-3">
                     <h4 className="font-medium text-gray-800 text-sm">Add New Address</h4>
-                    {["street", "city", "state", "country"].map((f) => (
+                    {["street", "city", "district", "state", "country"].map((f) => (
                       <input
                         key={f}
                         placeholder={f.charAt(0).toUpperCase() + f.slice(1)}
@@ -458,7 +459,7 @@ const Cart = () => {
                         Shipping
                         {selectedAddress && !allProductsFreeShipping() && (
                           <span className="text-xs text-gray-400">
-                            ({selectedAddress.city?.toLowerCase().includes('dhaka') ? 'Inside Dhaka' : 'Outside Dhaka'})
+                            ({selectedAddress.district?.toLowerCase() === 'dhaka' || selectedAddress.district?.toLowerCase().includes('dhaka') ? 'Inside Dhaka' : 'Outside Dhaka'})
                           </span>
                         )}
                       </span>
@@ -483,7 +484,7 @@ const Cart = () => {
                           <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          {selectedAddress.city?.toLowerCase().includes('dhaka') 
+                          {selectedAddress.district?.toLowerCase() === 'dhaka' || selectedAddress.district?.toLowerCase().includes('dhaka')
                             ? `Inside Dhaka: ৳${isExpressDelivery ? '120 (Express)' : '60'} shipping charge` 
                             : `Outside Dhaka: ৳${isExpressDelivery ? '300 (Express)' : '150'} shipping charge`}
                         </p>

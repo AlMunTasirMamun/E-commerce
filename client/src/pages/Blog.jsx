@@ -90,7 +90,7 @@ const Blog = () => {
             Our Blog
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Stay updated with the latest news, tips, and insights from IUBAT Marketplace
+            Stay updated with the latest news, tips, and insights from সদাই
           </p>
         </div>
 

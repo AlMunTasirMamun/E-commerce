@@ -2,11 +2,11 @@ const about = () => {
   return (
     <div className="mt-16 max-w-4xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold mb-4">
-        About IUBAT Marketplace
+        About সদাই
       </h1>
 
       <p className="text-gray-600 leading-relaxed mb-4">
-        IUBAT Marketplace is an online shopping platform committed to providing
+        সদাই is an online shopping platform committed to providing
         a smooth, secure, and affordable shopping experience.
       </p>
 

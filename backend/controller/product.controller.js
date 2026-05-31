@@ -4,7 +4,7 @@ import Product from "../models/product.model.js";
 // add product :/api/product/add
 export const addProduct = async (req, res) => {
   try {
-    const { name, price, offerPrice, description, category, freeShipping, stock } = req.body;
+    const { name, price, offerPrice, description, category, brand, freeShipping, stock } = req.body;
     // const image = req.files?.map((file) => `/uploads/${file.filename}`);
     const image = req.files?.map((file) => file.filename);
     if (
@@ -30,6 +30,7 @@ export const addProduct = async (req, res) => {
       offerPrice,
       description,
       category,
+      brand: brand || "General",
       image,
       freeShipping: freeShipping === 'true' || freeShipping === true,
       stock: stockNum,
@@ -150,5 +151,40 @@ export const updatePrice = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server error", error: error.message });
+  }
+};
+// delete product :/api/product/delete/:id
+export const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({
+        success: false,
+        message: "Product ID is required",
+      });
+    }
+
+    const product = await Product.findByIdAndDelete(id);
+
+    if (!product) {
+      return res.status(404).json({
+        success: false,
+        message: "Product not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Product deleted successfully",
+      product,
+    });
+  } catch (error) {
+    console.error("Error in deleteProduct:", error);
+    res.status(500).json({ 
+      success: false, 
+      message: "Server error while deleting product", 
+      error: error.message 
+    });
   }
 };

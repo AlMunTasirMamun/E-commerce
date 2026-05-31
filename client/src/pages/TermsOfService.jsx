@@ -15,14 +15,14 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Agreement to Terms</h2>
             <p className="text-gray-700">
-              By accessing and using IUBAT Marketplace, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+              By accessing and using সদাই, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
             </p>
           </section>
 
           {/* 2. Use License */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Use License</h2>
-            <p className="text-gray-700 mb-3">Permission is granted to temporarily download one copy of the materials (information or software) on IUBAT Marketplace for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+            <p className="text-gray-700 mb-3">Permission is granted to temporarily download one copy of the materials (information or software) on সদাই for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-700">
               <li>Modify or copy the materials</li>
               <li>Use the materials for any commercial purpose or for any public display</li>
@@ -77,7 +77,7 @@ const TermsOfService = () => {
           {/* 7. User Accounts */}
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">7. User Accounts</h2>
-            <p className="text-gray-700 mb-3">If you create an account on IUBAT Marketplace:</p>
+            <p className="text-gray-700 mb-3">If you create an account on সদাই:</p>
             <ul className="list-disc list-inside space-y-2 text-gray-700">
               <li>You are responsible for maintaining confidentiality of your password</li>
               <li>You are responsible for all activities under your account</li>
@@ -104,7 +104,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Limitation of Liability</h2>
             <p className="text-gray-700">
-              To the fullest extent permitted by law, IUBAT Marketplace shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the website or services.
+              To the fullest extent permitted by law, সদাই shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of or inability to use the website or services.
             </p>
           </section>
 
@@ -112,7 +112,7 @@ const TermsOfService = () => {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Intellectual Property Rights</h2>
             <p className="text-gray-700">
-              All content on IUBAT Marketplace including text, graphics, logos, images, and software is the property of IUBAT Marketplace or its content suppliers. Unauthorized reproduction is prohibited.
+              All content on সদাই including text, graphics, logos, images, and software is the property of সদাই or its content suppliers. Unauthorized reproduction is prohibited.
             </p>
           </section>
 
@@ -137,7 +137,7 @@ const TermsOfService = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Contact Information</h2>
             <p className="text-gray-700">
               For questions about these terms, contact:<br/>
-              <strong>Email:</strong> legal@iubatmarketplace.com<br/>
+              <strong>Email:</strong> legal@sodai.com<br/>
               <strong>Phone:</strong> +880 1700-000000
             </p>
           </section>

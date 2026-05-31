@@ -3,9 +3,9 @@ import Address from "../models/address.model.js";
 // POST /api/address/add
 export const addAddress = async (req, res) => {
   try {
-    const { street, city, state, country } = req.body;
+    const { street, city, district, state, country } = req.body;
 
-    if (!street || !city || !state || !country) {
+    if (!street || !city || !district || !state || !country) {
       return res.status(400).json({
         success: false,
         message: "All fields are required",
@@ -16,6 +16,7 @@ export const addAddress = async (req, res) => {
       userId: req.user,
       street,
       city,
+      district,
       state,
       country,
     });

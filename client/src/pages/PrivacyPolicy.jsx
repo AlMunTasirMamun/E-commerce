@@ -15,7 +15,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Introduction</h2>
             <p className="text-gray-700">
-              IUBAT Marketplace ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+              সদাই ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
           </section>
 
@@ -112,7 +112,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Contact Us</h2>
             <p className="text-gray-700">
               For privacy concerns or requests, contact:<br/>
-              <strong>Email:</strong> privacy@iubatmarketplace.com<br/>
+              <strong>Email:</strong> privacy@sodai.com<br/>
               <strong>Phone:</strong> +880 1700-000000
             </p>
           </section>

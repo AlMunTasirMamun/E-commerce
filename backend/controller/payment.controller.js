@@ -4,6 +4,24 @@ import Product from "../models/product.model.js";
 import { amarpayConfig, generateSignature } from "../config/amarpay.js";
 import axios from "axios";
 
+// Helper function to decrease product stock
+const decreaseProductStock = async (items) => {
+  for (const item of items) {
+    const product = await Product.findById(item.product);
+    if (!product) {
+      throw new Error(`Product not found: ${item.product}`);
+    }
+    if (product.stock < item.quantity) {
+      throw new Error(`Not enough stock for ${product.name}`);
+    }
+    product.stock -= item.quantity;
+    if (product.stock === 0) {
+      product.inStock = false;
+    }
+    await product.save();
+  }
+};
+
 // Create online payment for bKash, Nagad, Rocket, Cards, etc.
 export const createOnlinePayment = async (req, res) => {
   try {
@@ -40,6 +58,9 @@ export const createOnlinePayment = async (req, res) => {
     // Add tax charge 2%
     const taxAmount = Math.floor((amount * 2) / 100);
     const totalAmount = amount + taxAmount;
+
+    // Decrease product stock for each item
+    await decreaseProductStock(items);
 
     // Create order in database with payment status as paid
     // amount = product price + tax (revenue for seller)
@@ -293,6 +314,9 @@ export const handlePaymentCallback = async (req, res) => {
       order.isPaid = true;
       order.status = "Confirmed";
 
+      // Decrease product stock for each item
+      await decreaseProductStock(order.items);
+
       await transaction.save();
       await order.save();
 
@@ -374,6 +398,9 @@ export const completeTestPayment = async (req, res) => {
       const order = await Order.findById(transaction.orderId);
       order.isPaid = true;
       order.status = "Confirmed";
+      
+      // Decrease product stock for each item
+      await decreaseProductStock(order.items);
       
       await transaction.save();
       await order.save();

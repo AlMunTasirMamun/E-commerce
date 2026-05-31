@@ -17,6 +17,7 @@ import SellerLayout from "./pages/seller/SellerLayout";
 import AddProduct from "./pages/seller/AddProduct";
 import ProductList from "./pages/seller/ProductList";
 import Orders from "./pages/seller/Orders";
+import SalesReport from "./pages/seller/SalesReport";
 import Refunds from "./pages/seller/Refunds";
 import Support from "./pages/seller/Support";
 import Subscribers from "./pages/seller/Subscribers";
@@ -81,6 +82,7 @@ const App = () => {
               element={isSeller ? <ProductList /> : null}
             />
             <Route path="orders" element={isSeller ? <Orders /> : null} />
+            <Route path="sales-report" element={isSeller ? <SalesReport /> : null} />
             <Route path="refunds" element={isSeller ? <Refunds /> : null} />
             <Route path="reviews" element={isSeller ? <Reviews /> : null} />
             <Route path="support" element={isSeller ? <Support /> : null} />

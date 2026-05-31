@@ -7,6 +7,7 @@ import {
   getProductById,
   getProducts,
   updatePrice,
+  deleteProduct,
 } from "../controller/product.controller.js";
 import { upload } from "../config/multer.js";
 const router = express.Router();
@@ -16,8 +17,6 @@ router.get("/list", getProducts);
 router.get("/id", getProductById);
 router.post("/stock", authSeller, changeStock);
 router.post("/update-price", authSeller, updatePrice);
-// DELETE PRODUCT
-
-
+router.delete("/delete/:id", authSeller, deleteProduct);
 
 export default router;

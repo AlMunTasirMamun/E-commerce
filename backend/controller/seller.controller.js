@@ -1,13 +1,25 @@
 import jwt from "jsonwebtoken";
 import SellerNotification from "../models/sellerNotification.model.js";
+import { validateEmail } from "../utils/validators.js";
 
 // seller login :/api/seller/login
 export const sellerLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Validate email
+    const emailValidation = validateEmail(email);
+    if (!emailValidation.valid) {
+      return res.status(400).json({ message: emailValidation.message, success: false });
+    }
+
+    if (!password) {
+      return res.status(400).json({ message: "Password is required", success: false });
+    }
+
     if (
       password === process.env.SELLER_PASSWORD &&
-      email === process.env.SELLER_EMAIL
+      email.toLowerCase() === process.env.SELLER_EMAIL?.toLowerCase()
     ) {
       const token = jwt.sign({ email }, process.env.JWT_SECRET, {
         expiresIn: "7d",

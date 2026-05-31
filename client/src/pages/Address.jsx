@@ -10,6 +10,7 @@ const Address = () => {
     email: "",
     street: "",
     city: "",
+    district: "",
     state: "",
     zipCode: "",
     country: "",
@@ -105,6 +106,18 @@ const Address = () => {
               type="text"
               name="city"
               value={address.city}
+              onChange={handleChange}
+              className="w-full p-2 border rounded-md"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-gray-600">District</label>
+            <input
+              type="text"
+              name="district"
+              value={address.district}
               onChange={handleChange}
               className="w-full p-2 border rounded-md"
               required
